@@ -1,3 +1,5 @@
+KEYCHAIN_NAME=azuki
+
 function azuki-encrypt() {
 	local rawfile=$1
 	local zipfile="${rawfile}.zip"
@@ -8,7 +10,7 @@ function azuki-encrypt() {
 		return 1
 	fi
 
-	local passwd=$(security find-generic-password -gs azuki -w)
+	local passwd=$(security find-generic-password -s ${KEYCHAIN_NAME} -w)
 
 	expect -c "
         set timeout 10
@@ -31,7 +33,7 @@ function azuki-decrypt() {
 	local workplace="${TMPDIR}azuki/$(date +%s)"
 	mkdir -p ${workplace}
 
-	local passwd=$(security find-generic-password -gs azuki -w)
+	local passwd=$(security find-generic-password -s ${KEYCHAIN_NAME} -w)
 
 	expect -c "
         set timeout 10
