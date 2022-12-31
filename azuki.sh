@@ -33,7 +33,8 @@ function azuki-decrypt() {
 	local workplace="${TMPDIR}azuki/$(date +%s)"
 	mkdir -p ${workplace}
 
-	local passwd=$(security find-generic-password -s ${KEYCHAIN_NAME} -w)
+#	local passwd=$(security find-generic-password -s ${KEYCHAIN_NAME} -w)
+	local passwd='DokoyaraniTazunokoekikuKasumikana'
 
 	expect -c "
         set timeout 10
