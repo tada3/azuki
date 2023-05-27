@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 KEYCHAIN_NAME=azuki
 
 function azuki-encrypt() {
@@ -88,7 +90,7 @@ function azuki() {
 	shift $(expr $OPTIND - 1)
     OPTIND=$OPTIND_OLD
 
-	if [ ${help} -ne 0 ]; then
+	if [ ${help} -ne 0 ] || [ $1 = "help" ]; then
         echo "Usage"
 		echo " Encrypt: azuki [-e] <raw file>"
 		echo " Decrypt: azuki [-d] <ZIP file>"
